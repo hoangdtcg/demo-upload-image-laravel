@@ -14,7 +14,7 @@
     <style>
         html, body {
             background-color: #fff;
-            color: #636b6f;
+            color: #2d3032;
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
             height: 100vh;
@@ -36,14 +36,11 @@
             right: 10px;
             top: 18px;
         }
-        .content {
-            text-align: center;
-        }
         .title {
             font-size: 84px;
         }
         .links > a {
-            color: #636b6f;
+            color: #393e40;
             padding: 0 25px;
             font-size: 12px;
             font-weight: 600;
@@ -53,6 +50,13 @@
         }
         .m-b-md {
             margin-bottom: 30px;
+        }
+        .form-create-post {
+            margin-top: 2em;
+        }
+        input, textarea {
+            width: 30em;
+            margin-bottom: 1em;
         }
     </style>
 </head>
@@ -70,16 +74,18 @@
     @endif
 
     <div class="content">
-        <div class="title m-b-md">
-            {{ __('language.blog_application') }}
-        </div>
-
         <div class="links">
-            <a href="{!! route('user.change-language', ['en']) !!}">English</a>
-            <a href="{!! route('user.change-language', ['vi']) !!}">Vietnam</a>
-            <a href="{!! route('posts.list') !!} "> {!! __('language.list_post') !!}</a>
-            <a href="{!! route('posts.create') !!} "> {!! __('language.create_post') !!}</a>
+            <a href="{!! route('home') !!} "> {!! __('language.home') !!}</a>
+            <a href="{{route('posts.list')}}">{!! __('language.list_post') !!}</a>
         </div>
+        <form action="{{route('posts.store')}}" method="post" class="form-create-post">
+            {{csrf_field()}}
+            <label for="title">{!! __('language.title') !!}</label> <br/>
+            <input id="title" name="title" type="text"/> <br/>
+            <label for="content">{!! __('language.content') !!}</label> <br/>
+            <textarea id="content" name="content"></textarea><br/>
+            <button type="submit" value="Create">{!! __('language.save') !!}</button>
+        </form>
     </div>
 </div>
 </body>
