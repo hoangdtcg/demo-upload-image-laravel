@@ -84,6 +84,7 @@
             <input id="title" name="title" type="text"/> <br/>
             <label for="content">{!! __('language.content') !!}</label> <br/>
             <textarea id="content" name="content"></textarea><br/>
+            <input type="file" name="image"><br>
             <button type="submit" value="Create">{!! __('language.save') !!}</button>
         </form>
     </div>
